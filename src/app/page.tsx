@@ -1,12 +1,13 @@
+import { Banner } from '@/components/Banner';
 import { GoCodeOfConduct } from 'react-icons/go';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
-      <div>
+    <main>
+      <section>
+        <Banner />
         <GoCodeOfConduct />
-        <p>Icons test</p>
-      </div>
+      </section>
     </main>
   );
 }
