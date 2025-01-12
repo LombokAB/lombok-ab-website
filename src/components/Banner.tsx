@@ -1,6 +1,6 @@
-import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { BackgroundOverlay } from './BackgroundOverlay';
+import Logo from '../../public/Logo.svg';
 
 interface BannerProps {
   children?: React.ReactNode;
@@ -22,6 +22,7 @@ export const Banner: React.FC<BannerProps> = ({ children }) => {
                 { label: 'Workshops', href: '/workshops' },
                 { label: 'Contact', href: '/contact' },
               ]}
+              logoUrl={Logo}
             />
             {children}
           </div>
