@@ -1,7 +1,7 @@
 import { Banner } from '@/components/Banner';
 import { Hero } from '@/components/Hero';
-import { GoCodeOfConduct } from 'react-icons/go';
 import HeroPicture from '../../public/HeroPicture.svg';
+import { ExpertServices } from '@/components/ExpertServices';
 
 export default function Home() {
   return (
@@ -17,8 +17,8 @@ export default function Home() {
             buttonLink="mailto:attilafazekas@example.com"
           />
         </Banner>
-        <GoCodeOfConduct />
       </section>
+      <ExpertServices header="What I do" />
     </main>
   );
 }
