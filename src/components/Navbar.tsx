@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <Link href="/">
         <Image src={logoUrl} alt="Logo" />
       </Link>
-      <ul className="flex space-x-4">
+      <ul className="flex space-x-4 ">
         {items.map((item) => (
           <li key={item.href}>
             <Link

@@ -12,6 +12,9 @@ const config = {
   prefix: '',
   theme: {
     extend: {
+      boxShadow: {
+        'custom-top-bottom': '-16px -8px 24px rgba(0, 0, 0, 0.4)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

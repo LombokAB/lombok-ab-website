@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 interface HeroProps {
-  children?: React.ReactNode;
   name: string;
   title: string;
   paragraph: string;
@@ -18,34 +17,41 @@ export const Hero: React.FC<HeroProps> = ({
   paragraph,
   imageUrl,
   buttonText,
+  buttonLink,
 }) => {
   return (
-    <div className="flex-grow flex items-center justify-center relative z-10">
-      <div className="flex flex-col flex-wrap lg:flex-row items-center justify-center gap-8 lg:gap-16 text-white">
-        <div className="flex flex-1 flex-col gap-10 align-middle justify-center">
+    <div className="relative min-h-dvh w-full bg-banner bg-cover content-center">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-tl from-black to-zinc-800 opacity-85"></div>
+      {/* Text Content */}
+      <div className="relative z-10 mx-auto flex flex-col lg:flex-row items-center justify-center px-6 lg:px-16 ">
+        <div className="flex-1 text-white  lg:text-left space-y-6 max-w-prose gap-6">
           <h2 className="text-4xl lg:text-5xl font-bold text-start">{name}</h2>
-          <h1 className="text-xl lg:text-2xl text-start -mt-6">{title}</h1>
-          <div className="flex gap-6">
+          <h1 className="text-xl lg:text-2xl text-start">{title}</h1>
+          <div className="flex justify-center lg:justify-start  gap-6 md:gap-10">
             <GitHubLogoIcon className="h-8 w-8" />
             <LinkedInLogoIcon className="h-8 w-8" />
           </div>
-          <p className="text-start">{paragraph}</p>
-          <div>
-            <Button variant="default">{buttonText}</Button>
-          </div>
+          <p className="text-lg text-start">{paragraph}</p>
+          {buttonLink && (
+            <a href={buttonLink}>
+              <Button variant="default">{buttonText}</Button>
+            </a>
+          )}
         </div>
-        <div className="relative w-80 h-auto overflow-hidden flex-1 flex align-middle justify-center -mt-28 z-10">
-          {imageUrl && (
+        {/* Hero Image */}
+        {imageUrl && (
+          <div className="relative w-64 md:w-80 flex justify-center md:-mt-28 ">
             <Image
               src={imageUrl}
               alt="Hero Image"
               objectFit="contain"
               width={320}
               height={494}
-              className=""
+              priority
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
