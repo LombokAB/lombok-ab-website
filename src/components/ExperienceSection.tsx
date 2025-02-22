@@ -23,9 +23,9 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tl from-black to-zinc-800 opacity-85" />
       {/* Text Content */}
-      <div className="relative z-10 mx-auto container grid lg:grid-cols-2 gap-12 lg:gap-24 justify-center items-start">
+      <div className="relative z-10 mx-auto container grid lg:grid-cols-2 gap-6 lg:gap-24 justify-center items-start">
         {/* Work Experience Column */}
-        <div className="text-white space-y-6 max-w-prose h-fll">
+        <div className="text-white max-w-prose flex flex-col h-full gap-6">
           <h2>{workExperienceTitle}</h2>
           <ul className="bg-primary-grey p-10 rounded-sm shadow-custom-top-bottom  list-disc-design-green-large list-disc flex flex-col gap-6">
             {workExperienceData.map((workExperience) => (
@@ -48,7 +48,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             ))}
           </ul>
         </div>
-        <div className="text-white space-y-6 max-w-prose flex flex-col h-full">
+        <div className="text-white gap-6 max-w-prose flex flex-col h-full">
           {/* workshops And Courses  Column */}
           <h2>{workshopsAndCoursesTitle}</h2>
           <ul className="bg-primary-grey p-10 rounded-sm shadow-custom-top-bottom list-disc-design-green-medium list-disc flex flex-col gap-6 text-pretty relative text-lg">
