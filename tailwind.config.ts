@@ -68,6 +68,8 @@ const config = {
           '5': 'hsl(var(--chart-5))',
         },
         'button-green': 'hsl(var(--button-green))',
+        'primary-grey': 'hsl(var(--primary-grey))',
+        'design-green': 'hsl(var(--design-green))',
       },
     },
   },

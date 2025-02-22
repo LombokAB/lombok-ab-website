@@ -20,8 +20,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         width={32}
         height={32}
       />
-      <h3 className="text-lg font-bold text-start">{title}</h3>
-      <p className="text-sm mt-2 text-start">{description}</p>
+      <h2 className="font-bold text-start">{title}</h2>
+      <p className="mt-2 text-start">{description}</p>
     </div>
   );
 };

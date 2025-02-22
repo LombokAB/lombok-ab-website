@@ -1,8 +1,12 @@
 import { Hero } from '@/components/Hero';
 import HeroPicture from '../../public/HeroPicture.svg';
-import { ExpertServices } from '@/components/ExpertServices';
+import { ExpertServicesSection } from '@/components/ExpertServicesSection';
 import { servicesData } from '@/data/services-data';
 import { Header } from '@/components/Header';
+import { ExperienceSection } from '@/components/ExperienceSection';
+import { workExperienceData } from '@/data/work-experience-data';
+import { workshopsAndCoursesData } from '@/data/workshops-and-courses';
+import { certificationsData } from '@/data/certifications-data';
 
 export default function Home() {
   return (
@@ -16,7 +20,16 @@ export default function Home() {
         buttonText="Download CV"
         buttonLink="mailto:attilafazekas@example.com"
       />
-      <ExpertServices header="What I do" services={servicesData} />
+      <ExpertServicesSection header="What I do" services={servicesData} />
+      <ExperienceSection
+        workExperienceTitle="Work Experience"
+        workExperienceData={workExperienceData}
+        workshopsAndCoursesData={workshopsAndCoursesData}
+        workshopsAndCoursesTitle="Attended workshops 
+       & courses"
+        certificationsData={certificationsData}
+        certificationsTitle="ISTQB certifications"
+      />
     </main>
   );
 }

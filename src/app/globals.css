@@ -50,6 +50,8 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --button-green: 162 64% 42%;
+    --primary-grey: 240 3% 23%;
+    --design-green: 141 29% 51%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -77,6 +79,26 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --button-green: 162 40% 60%;
+    --primary-grey: 240 3% 23%;
+    --design-green: 141 29% 51%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .list-disc-design-green-large {
+    & > li::marker {
+      color: hsl(var(--design-green));
+      font-size: 1.6em;
+    }
+  }
+  .list-disc-design-green-medium {
+    & > li::marker {
+      color: hsl(var(--design-green));
+    }
   }
 }
 
