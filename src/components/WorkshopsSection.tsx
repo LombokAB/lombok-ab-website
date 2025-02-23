@@ -12,11 +12,13 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({
   title,
   workshops,
 }) => {
+  const autoSlide = true;
+  const interval = 10000;
   return (
     <section className="md:px-12 bg-primary-grey min-h-dvh px-6 lg:px-16 content-center py-10 md:py-10 lg:py-0">
       <div className="container flex flex-col items-center justify-center flex-wrap">
         <h2 className="font-bold text-center text-white">{title}</h2>
-        <Carousel>
+        <Carousel autoSlide={autoSlide} interval={interval}>
           {workshops.map((workshop, index) => (
             <div
               key={index}
