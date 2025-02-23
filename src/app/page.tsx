@@ -7,6 +7,8 @@ import { ExperienceSection } from '@/components/ExperienceSection';
 import { workExperienceData } from '@/data/work-experience-data';
 import { workshopsAndCoursesData } from '@/data/workshops-and-courses';
 import { certificationsData } from '@/data/certifications-data';
+import { WorkshopsSection } from '@/components/WorkshopsSection';
+import { workshopsData } from '@/data/workshops-data';
 
 export default function Home() {
   return (
@@ -30,6 +32,7 @@ export default function Home() {
         certificationsData={certificationsData}
         certificationsTitle="ISTQB certifications"
       />
+      <WorkshopsSection title="Workshops & Seminars" workshops={workshopsData} />
     </main>
   );
 }

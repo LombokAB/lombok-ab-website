@@ -73,7 +73,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             <ul className="bg-primary-grey rounded-sm shadow-custom-top-bottom list-disc-design-green-medium list-disc p-10 space-y-6">
               {certificationsData.map((certification) => (
                 <li key={certification.id}>
-                  <div className="flex gap-4 text-lg">
+                  <div className="flex gap-4 text-lg text-pretty flex-wrap">
                     <h4>{certification.title}</h4>
                     <p className="text-design-green"> - {certification.date}</p>
                   </div>
