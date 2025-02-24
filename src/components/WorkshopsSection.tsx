@@ -1,5 +1,5 @@
 import { Workshop } from '@/data/workshops-data';
-import { Carousel } from './Carousel';
+import { Carousel } from '@/components/Carousel';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,7 +15,10 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({
   const autoSlide = true;
   const interval = 10000;
   return (
-    <section className="md:px-12 bg-primary-grey min-h-dvh px-6 lg:px-16 content-center py-10 md:py-10 lg:py-0">
+    <section
+      className="md:px-12 bg-primary-grey min-h-dvh px-6 lg:px-16 content-center py-10 md:py-10 lg:py-0"
+      id="workshops"
+    >
       <div className="container flex flex-col items-center justify-center flex-wrap">
         <h2 className="font-bold text-center text-white">{title}</h2>
         <Carousel autoSlide={autoSlide} interval={interval}>

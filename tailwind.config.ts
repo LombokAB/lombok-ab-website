@@ -74,6 +74,9 @@ const config = {
     },
   },
   plugins: [tailwindcssAnimate],
+  corePlugins: {
+    backdropFilter: true,
+  },
 } satisfies Config;
 
 export default config;

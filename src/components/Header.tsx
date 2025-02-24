@@ -8,10 +8,10 @@ export const Header: React.FC = () => {
         <Navbar
           items={[
             { label: 'Home', href: '/' },
-            { label: 'About', href: '/about' },
-            { label: 'Skills', href: '/skills' },
-            { label: 'Experience', href: '/experience' },
-            { label: 'Workshops', href: '/workshops' },
+            { label: 'About', href: '#hero' },
+            { label: 'Skills', href: '#skills' },
+            { label: 'Experience', href: '#experience' },
+            { label: 'Workshops', href: '#workshops' },
             { label: 'Contact', href: '/contact' },
           ]}
           logoUrl={Logo}

@@ -19,7 +19,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   certificationsTitle,
 }) => {
   return (
-    <section className="relative w-full bg-banner bg-cover min-h-dvh px-6 lg:px-16 content-center py-10">
+    <section
+      className="relative w-full bg-banner bg-cover min-h-dvh px-6 lg:px-16 content-center py-10"
+      id="experience"
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tl from-black to-zinc-800 opacity-85" />
       {/* Text Content */}
