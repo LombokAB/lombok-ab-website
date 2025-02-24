@@ -51,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav className={cn('p-4 flex justify-between items-center', className)}>
-      <Link href="/" aria-label="Go to homepage">
-        <Image src={logoUrl} alt="Logo" priority />
+      <Link href="/" aria-label="Go to homepage" as={logoUrl}>
+        <Image src={logoUrl} alt="Logo" />
       </Link>
       {/* Desktop Navigation (Medium screens and up) */}
       <ul className="hidden md:flex space-x-4">

@@ -51,8 +51,8 @@ export const Hero: React.FC<HeroProps> = ({
               src={imageUrl}
               alt="Hero Image"
               objectFit="contain"
-              width={320}
-              height={494}
+              style={{ width: 'auto', height: 'auto' }}
+              sizes="(max-width: 768px) 100vw, 800px"
               priority
             />
           </div>
