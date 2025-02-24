@@ -9,6 +9,7 @@ import { workshopsAndCoursesData } from '@/data/workshops-and-courses';
 import { certificationsData } from '@/data/certifications-data';
 import { WorkshopsSection } from '@/components/WorkshopsSection';
 import { workshopsData } from '@/data/workshops-data';
+import { ContactFormSection } from '@/components/ContactFormSection';
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         certificationsTitle="ISTQB certifications"
       />
       <WorkshopsSection title="Workshops & Seminars" workshops={workshopsData} />
+      <ContactFormSection header="Contact Me" />
     </main>
   );
 }

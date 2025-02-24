@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
             { label: 'Skills', href: '#skills' },
             { label: 'Experience', href: '#experience' },
             { label: 'Workshops', href: '#workshops' },
-            { label: 'Contact', href: '/contact' },
+            { label: 'Contact', href: '#contact' },
           ]}
           logoUrl={Logo}
         />
