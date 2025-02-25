@@ -26,7 +26,7 @@ export const ContactForm = () => {
     if (state.submissionStatus === 'success') {
       toast.success('Message sent successfully!');
     } else if (state.submissionStatus === 'error' && state.errorMessage) {
-      toast.error(state.errorMessage || 'Something went wrong!');
+      toast.error('Something went wrong! Please try again later.');
     }
   }, [state.submissionStatus, state.errorMessage]);
 

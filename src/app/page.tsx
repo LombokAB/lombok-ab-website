@@ -22,8 +22,8 @@ export default function Home() {
           title="Test Automation Engineer "
           paragraph="I help teams succeed in improving their testing efforts through smart implementation of tools so they can release higher quality products faster."
           imageUrl={HeroPicture}
-          buttonText="Download CV"
-          buttonLink="mailto:attilafazekas@example.com"
+          buttonTextCTA="Contact Me"
+          buttonTextCV="Download CV"
         />
         <ExpertServicesSection header="What I do" services={servicesData} />
         <ExperienceSection
