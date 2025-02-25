@@ -52,6 +52,8 @@
     --button-green: 162 64% 42%;
     --primary-grey: 240 3% 23%;
     --design-green: 141 29% 51%;
+    --success: 141 29% 51%;
+    --success-foreground: 0 0% 98%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -81,6 +83,8 @@
     --button-green: 162 40% 60%;
     --primary-grey: 240 3% 23%;
     --design-green: 141 29% 51%;
+    --success: 141 29% 51%;
+    --success-foreground: 0 0% 98%;
   }
 }
 
@@ -120,5 +124,14 @@
   }
   p {
     @apply text-base text-center font-mono;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

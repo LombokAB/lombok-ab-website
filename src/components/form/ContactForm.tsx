@@ -4,8 +4,8 @@ import { ContactFormState } from '@/components/form/types';
 import FormField from '@/components/form/FormField';
 import TextAreaField from '@/components/form/TextAreaField';
 import { Button } from '@/components/ui/button';
-import { useActionState } from 'react';
-import { FormFeedback } from '@/components/form/FormFeedback';
+import { useActionState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 const initialState: ContactFormState = {
   message: '',
@@ -21,6 +21,14 @@ export const ContactForm = () => {
     submitContactForm,
     initialState,
   );
+
+  useEffect(() => {
+    if (state.submissionStatus === 'success') {
+      toast.success('Message sent successfully!');
+    } else if (state.submissionStatus === 'error' && state.errorMessage) {
+      toast.error(state.errorMessage || 'Something went wrong!');
+    }
+  }, [state.submissionStatus, state.errorMessage]);
 
   return (
     <form
@@ -57,13 +65,11 @@ export const ContactForm = () => {
         id="message"
         placeholder="Your Message..."
         name="message"
-        defaultValue={typeof state.message === 'string' ? state.message : ''}
         required
       />
       <Button variant="default" type="submit" disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Submit'}
       </Button>
-      <FormFeedback state={state} />
     </form>
   );
 };
