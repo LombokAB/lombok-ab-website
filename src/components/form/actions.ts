@@ -1,47 +1,99 @@
 'use server';
+import { ContactFormState } from '@/components/form/types';
+import { validateContactForm } from '@/components/form/validation';
 
-export interface ContactFormState {
-  message: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  submissionStatus: 'idle' | 'loading' | 'success' | 'error' | null;
-  errorMessage: string | null;
-}
+const FORM_CONFIG = {
+  API_ENDPOINT: (formId: string) => `https://usebasin.com/f/${formId}`,
+  AUTH_HEADER: (apiKey: string) => `Bearer ${apiKey}`,
+  ERROR_MESSAGES: {
+    CONFIG_ERROR: 'Configuration error. Please check server logs.',
+    GENERAL_ERROR: 'Error submitting form. Please try again later.',
+  },
+};
+
+const createErrorState = (
+  previousState: ContactFormState,
+  errorMessage: string,
+): ContactFormState => {
+  return {
+    ...previousState,
+    submissionStatus: 'error',
+    errorMessage,
+  };
+};
+
+const createSuccessState = (
+  formFields: Omit<ContactFormState, 'submissionStatus' | 'errorMessage'>,
+): ContactFormState => {
+  return { ...formFields, submissionStatus: 'success', errorMessage: null };
+};
+
+const extractFormData = (formData: FormData) => {
+  return {
+    firstName: String(formData.get('firstName') || ''),
+    lastName: String(formData.get('lastName') || ''),
+    email: String(formData.get('email') || ''),
+    message: String(formData.get('message') || ''),
+  };
+};
 
 export async function submitContactForm(
   previousState: ContactFormState,
   formData: FormData,
-) {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+): Promise<ContactFormState> {
+  const apiKey = process.env.USEBASIN_API_KEY;
+  const formId = process.env.USEBASIN_FORM_ID;
 
-  const firstName = formData.get('firstName');
-  const lastName = formData.get('lastName');
-  const email = formData.get('email');
-  const message = formData.get('message');
+  if (!apiKey || !formId) {
+    console.error(
+      'USEBASIN_API_KEY or USEBASIN_FORM_ID environment variables are not set.',
+    );
+    return createErrorState(previousState, FORM_CONFIG.ERROR_MESSAGES.CONFIG_ERROR);
+  }
 
-  console.log('Server Action - Form Data:', { firstName, lastName, email, message });
+  const formFields = extractFormData(formData);
 
-  const isSuccess = false;
-
-  if (isSuccess) {
+  const validation = validateContactForm(formData);
+  if (!validation.isValid) {
     return {
       ...previousState,
-      message: message ? String(message) : '',
-      firstName: firstName ? String(firstName) : '',
-      lastName: lastName ? String(lastName) : '',
-      email: email ? String(email) : '',
-      submissionStatus: 'success',
-      errorMessage: null,
-    } satisfies ContactFormState;
-  } else
-    return {
-      ...previousState,
-      message: message ? String(message) : '',
-      firstName: firstName ? String(firstName) : '',
-      lastName: lastName ? String(lastName) : '',
-      email: email ? String(email) : '',
+      ...formFields,
       submissionStatus: 'error',
-      errorMessage: 'Something went wrong. Please try again.',
-    } satisfies ContactFormState;
+      errorMessage: Object.values(validation.errors).join('. '),
+    };
+  }
+
+  try {
+    // Submit the form
+    const response = await fetch(FORM_CONFIG.API_ENDPOINT(formId), {
+      method: 'POST',
+      headers: {
+        Authorization: FORM_CONFIG.AUTH_HEADER(apiKey),
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(formFields),
+    });
+
+    // Process the response
+    if (response.ok) {
+      console.info('Form submitted successfully!');
+      return createSuccessState(formFields);
+    } else {
+      const errorDetails = await response.json().catch(() => ({}));
+      console.error(
+        'Usebasin API Error:',
+        response.status,
+        response.statusText,
+        errorDetails,
+      );
+      return createErrorState(
+        previousState,
+        `Submission failed. Usebasin API returned error: ${response.status} ${response.statusText}`,
+      );
+    }
+  } catch (error) {
+    console.error('Error submitting to Usebasin:', error);
+    return createErrorState(previousState, FORM_CONFIG.ERROR_MESSAGES.GENERAL_ERROR);
+  }
 }
