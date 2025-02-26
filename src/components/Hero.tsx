@@ -9,7 +9,7 @@ interface HeroProps {
   paragraph: string;
   imageUrl?: string;
   buttonTextCTA: string;
-  buttonTextCV: string;
+  // buttonTextCV: string;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({
   paragraph,
   imageUrl,
   buttonTextCTA,
-  buttonTextCV,
+  // buttonTextCV,
 }) => {
   return (
     <section
@@ -46,11 +46,11 @@ export const Hero: React.FC<HeroProps> = ({
                 {buttonTextCTA}
               </Button>
             </Link>
-            <a href="/cv-attila-fazekas.pdf" download>
+            {/* <a href="/cv-attila-fazekas.pdf" download>
               <Button variant="outline" className="mt-6 text-md">
                 {buttonTextCV}
               </Button>
-            </a>
+            </a> */}
           </div>
         </div>
         {/* Hero Image */}

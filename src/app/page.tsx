@@ -23,7 +23,7 @@ export default function Home() {
           paragraph="I help teams succeed in improving their testing efforts through smart implementation of tools so they can release higher quality products faster."
           imageUrl={HeroPicture}
           buttonTextCTA="Contact Me"
-          buttonTextCV="Download CV"
+          // buttonTextCV="Download CV"
         />
         <ExpertServicesSection header="What I do" services={servicesData} />
         <ExperienceSection
